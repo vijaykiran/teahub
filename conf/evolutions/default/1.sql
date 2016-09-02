@@ -1,51 +1,38 @@
-# TeaHub project
-# Initial evolution to create the tables in the database
+# --- First database schema - HSQL
 
-# --- Ups!
-create type UserRole as enum ('user', 'lead', 'admin' );
-create type UserStatus as enum ('disabled','enabled');
+# --- !Ups
 
-create table users (
-    Id              serial not null primary key,
-    GitHubUser      varchar not null unique,
-    GitHubToken     varchar,
-    Name            varchar not null,
-    Email           varchar,
-    Role            UserRole not null default 'user',
-    Status          UserStatus not null default 'disabled'
-);
+CREATE TABLE TIMETABLE (ID bigint, HOURS integer);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (162910613, 1);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (162712503, 2);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (162711942, 3);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (30128112, 4);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20867042, 5);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (17935292, 6);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (17798294, 7);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (13354215, 8);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (11980309, 9);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (11799239, 10);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (10685476, 1);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (10535584, 2);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (9809036, 3);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (140218954, 4);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (140217435, 5);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (91619928, 6);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (91619261, 7);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (91618856, 8);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20606754, 9);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20606253, 10);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20605898, 11);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20605660, 12);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20605469, 13);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20528615, 14);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20521039, 15);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (20519760, 16);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (155079425, 17);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (8031681, 18);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (8031518, 19);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (8031294, 20);
+INSERT INTO TIMETABLE (ID, HOURS) VALUES (8031208, 1);
 
-create table projects (
-    Id              serial not null primary key,
-    GitHubRepo      varchar not null unique,
-    TogglProject    varchar,
-    Name            varchar not null
-);
-
-create table user2project (
-    UserId          integer not null,
-    ProjectId       integer not null,
-    Role            UserRole not null default 'user',
-    Status          UserStatus not null default 'disabled',
-    primary key (UserId, ProjectId),
-    foreign key (UserId) references users (Id) on delete cascade,
-    foreign key (ProjectId) references projects (Id) on delete cascade
-);
-
-create table issues (
-    Id              serial not null primary key,
-    ProjectId       integer not null,
-    GitHubIssueId   integer not null,
-    Title           varchar not null,
-    Estimate        integer,
-    foreign key (ProjectId) references projects (Id) on delete cascade
-); 
-
-
-# --- Downs!
-
-drop table issues;
-drop table user2project
-drop table projects;
-drop table users;
-
+# --- !Downs

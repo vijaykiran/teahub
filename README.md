@@ -66,7 +66,7 @@ Besides testing new frameworks it's also an opportunity to test new tooling that
 ### Initial configurations
 The configuration of the project goes under conf/application.conf
 
-    Right now, we are using PostgreSQL, and you should change the properties 'url', 'user' and 'password' according to the configuration of your local database
+Right now, we are using PostgreSQL, and you should change the properties 'url', 'user' and 'password' according to the configuration of your local database
 
 The properties 'client.id' and 'client.secret' should be changed sometime according with the tokens generated from GitHub, but right now those should work.
 

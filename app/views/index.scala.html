@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Hello</title>
-    </head>
-    <body>
-        <h1>
-            <marquee>Hello TeaHubbers! hihihi! </marquee>
-        </h1>
-    </body>
-</html>
+@(message: String, redirectUrl: String)
+
+@main("Welcome to Play") {
+<h2>Not Yet Authenticated</h2>
+<a href="@redirectUrl"><em><b>Log in with GITHUB!</b></em></a>
+}
